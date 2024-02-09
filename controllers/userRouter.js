@@ -38,31 +38,31 @@ let blog = new userModel(data)
 
 })
 
-// router.post("/signin", async (req, res) => {
-//     let input = req.body
-//     let email = req.body.email
-//     let data=await userModel.findOne({"email":email})
-//     if (!data) {
-//         return res.json({
-//             status:"Invalid user"
-//         })
-//     }
-//     console.log(data)
-//     let dbPassword=data.password
-//     let inputPassword=req.body.password
-//     console.log(dbPassword)
-//     console.log(inputPassword)
-//     const match=await bcrypt.compare(inputPassword,dbPassword)
-//     if(!match)
-//     {
-//         return res.json({
-//             status:"Invalid password"
-//         })
-//     }
-//     res.json({
-//         status: "success"
-//     })
-// })
+router.post("/signin", async (req, res) => {
+    let input = req.body
+    let email = req.body.email
+    let data=await userModel.findOne({"email":email})
+    if (!data) {
+        return res.json({
+            status:"Invalid user"
+        })
+    }
+    console.log(data)
+    let dbPassword=data.password
+    let inputPassword=req.body.password
+    console.log(dbPassword)
+    console.log(inputPassword)
+    const match=await bcrypt.compare(inputPassword,dbPassword)
+    if(!match)
+    {
+        return res.json({
+            status:"Invalid password"
+        })
+    }
+    res.json({
+        status: "success"
+    })
+})
 
 
 module.exports = router
